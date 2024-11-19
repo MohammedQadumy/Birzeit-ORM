@@ -1,5 +1,4 @@
-﻿using BirzeitUniversity.Models;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace BirzeitUniversity.Models
 {
