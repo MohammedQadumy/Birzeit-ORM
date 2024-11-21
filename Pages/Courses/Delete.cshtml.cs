@@ -21,20 +21,19 @@ namespace BirzeitUniversity.Pages.Courses
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (id == null || _context.Courses == null)
+            if (id == null)
             {
                 return NotFound();
             }
 
-            var course = await _context.Courses.FirstOrDefaultAsync(m => m.CourseID == id);
+            Course = await _context.Courses
+                .AsNoTracking()
+                .Include(c => c.Department)
+                .FirstOrDefaultAsync(m => m.CourseID == id);
 
-            if (course == null)
+            if (Course == null)
             {
                 return NotFound();
-            }
-            else
-            {
-                Course = course;
             }
             return Page();
         }

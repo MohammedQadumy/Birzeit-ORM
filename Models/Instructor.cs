@@ -1,5 +1,4 @@
-﻿using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BirzeitUniversity.Models
@@ -28,7 +27,7 @@ namespace BirzeitUniversity.Models
             get { return LastName + ", " + FirstMidName; }
         }
         public ICollection<Course> Courses { get; set; }
-        public OfficeAssignment officeAssignment { get; set; }
+        public OfficeAssignment OfficeAssignment { get; set; }
 
     }
 }
