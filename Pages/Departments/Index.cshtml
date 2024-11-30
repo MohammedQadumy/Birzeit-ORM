@@ -1,4 +1,4 @@
-﻿@page
+﻿@page 
 @model BirzeitUniversity.Pages.Departments.IndexModel
 
 @{
@@ -48,7 +48,10 @@
                     @Html.DisplayFor(modelItem => item.Administrator.FullName)
                 </td>
                 <td>
-                    @Utility.GetLastChars(item.ConcurrencyToken)
+                    @Html.DisplayFor(modelItem=> item.Administrator.FullName)
+                </td>
+                <td>
+                    @Utility.GetLastChars(item.Concurrency)
                 </td>
                 <td>
                     <a asp-page="./Edit" asp-route-id="@item.DepartmentID">Edit</a> |

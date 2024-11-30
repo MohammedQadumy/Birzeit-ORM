@@ -1,12 +1,9 @@
-﻿
+﻿using BirzeitUniversity.Data;
+using BirzeitUniversity.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using BirzeitUniversity.Models;
-using BirzeitUniversity.Data;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace BirzeitUniversity.Pages.Departments
 {
@@ -20,15 +17,15 @@ namespace BirzeitUniversity.Pages.Departments
         }
 
         [BindProperty]
-        public Department Department { get; set; } = default!;
-
+        public Department Department { get; set; }
+        // Replace ViewData["InstructorID"] 
         public SelectList InstructorNameSL { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int id)
         {
-            Department = await _context.Departments.
-                Include(d => d.Administrator)
-                .AsNoTracking()
+            Department = await _context.Departments
+                .Include(d => d.Administrator)  // eager loading
+                .AsNoTracking()                 // tracking not required
                 .FirstOrDefaultAsync(m => m.DepartmentID == id);
 
             if (Department == null)
@@ -36,19 +33,19 @@ namespace BirzeitUniversity.Pages.Departments
                 return NotFound();
             }
 
-            InstructorNameSL = new SelectList(_context.Instructors, "ID", "FirstMidName");
-            return Page();
+            // Use strongly typed data rather than ViewData.
+            InstructorNameSL = new SelectList(_context.Instructors,
+                "ID", "FirstMidName");
 
+            return Page();
         }
 
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync(int id)
         {
-            if (!ModelState.IsValid)
-            {
-                return Page();
-            }
+            //if (!ModelState.IsValid)
+            //{
+            //    return Page();
+            //}
 
             // Fetch current department from DB.
             // ConcurrencyToken may have changed.
@@ -148,8 +145,5 @@ namespace BirzeitUniversity.Pages.Departments
               + "have been displayed. If you still want to edit this record, click "
               + "the Save button again.");
         }
-
-
-
     }
 }

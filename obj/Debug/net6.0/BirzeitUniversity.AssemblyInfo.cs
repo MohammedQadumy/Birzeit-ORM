@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BirzeitUniversity")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a7732c72ad6a6740ed822832dbfd5ae98e32cc0e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6a8f8a7735c2e299a3288af0959cceea2c39aa63")]
 [assembly: System.Reflection.AssemblyProductAttribute("BirzeitUniversity")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BirzeitUniversity")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
